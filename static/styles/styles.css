@@ -1,0 +1,35 @@
+#bg-video-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: -1;
+}
+
+#bg-video {
+    height: 100%;
+    width: 100%;
+}
+
+.hidden {
+    transition: all 1s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.shown {
+    transition: all 2s;
+    visibility: visible;
+    opacity: 1;
+}
+
+body {
+    font-size: 36px;
+}
+
+#bg-video-box {
+    position: fixed;
+    background: #000000; /* For browsers that do not support gradients */
+  }
