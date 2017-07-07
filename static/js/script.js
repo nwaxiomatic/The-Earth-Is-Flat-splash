@@ -1,18 +1,31 @@
 var supportsAutoplay = false;
 var waitTime;
+var iframe = document.querySelector('iframe');
+var player = new Vimeo.Player(iframe);
 
-$('#bg-video').vide({
-	mp4: 'static/media/video/Flat Earth.mp4',
-	poster: 'static/media/img/flatearth.png',
-}, {
-	posterType: 'jpg',
-	origin: 'content-box',
-});
-instance = $('#bg-video').data('vide');
-video = instance.getVideoObject();
-video.addEventListener('play', function () {
+function resizeVideo(){
+    var h = $(document).height();
+    var w = $(document).width();
+    if(h > w){
+        $('.square-box').css({
+            'width' : '100vh',
+            'height' : '100vh',
+        })
+    }
+    else {
+        $('.square-box').css({
+            'width' : '100vw',
+            'height' : '100vw',
+        })
+    }
+}
+resizeVideo();
+window.addEventListener('resize', resizeVideo);
+
+player.on('play', function() {
     supportsAutoplay = true;
 });
+
 setTimeout(          //wait for listener to run
     function(){
         if(supportsAutoplay){
