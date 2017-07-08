@@ -1,3 +1,9 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+    overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -20,7 +26,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  overflow: hidden;
 }
 
 #player, iframe{
