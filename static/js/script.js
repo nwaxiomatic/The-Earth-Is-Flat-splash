@@ -1,5 +1,5 @@
 var supportsAutoplay = false;
-var waitTime;
+var waitTime = 2000;
 var iframe = document.querySelector('iframe');
 var player = new Vimeo.Player(iframe);
 
@@ -22,23 +22,29 @@ function resizeVideo(){
 resizeVideo();
 window.addEventListener('resize', resizeVideo);
 
-player.on('loaded', function() {
-    supportsAutoplay = true;
-});
+
 player.on('timeupdate', function() {
     $('.overlay').removeClass('shown');
 });
 
-setTimeout(          //wait for listener to run
-    function(){
-        if(supportsAutoplay){
-        	video.onloadeddata = function(){
-	$('#bg-video-box').addClass('shown');
-}
-        }
-        else {
-        	$('#bg-video-box').addClass('shown');
-        }
-    },
-    waitTime
-); 
+var state = { autoplaying : false };
+    
+player.on('play', () => {
+  state.autoplaying = true;
+  player.off('play');
+});
+
+player.getPaused().then((paused) => {
+  var playing = !paused;
+  state.autoplaying = state.autoplaying || playing;
+  state.apiEnabled = true;
+});
+
+var state = { apiEnabled : null };
+                  
+setTimeout(() => {
+  if (state.apiEnabled === null) {
+    state.apiEnabled = false;  
+    $('.overlay').removeClass('shown');
+  }
+}, 100);
