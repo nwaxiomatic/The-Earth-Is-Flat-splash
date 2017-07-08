@@ -22,8 +22,11 @@ function resizeVideo(){
 resizeVideo();
 window.addEventListener('resize', resizeVideo);
 
-player.on('play', function() {
+player.on('loaded', function() {
     supportsAutoplay = true;
+});
+player.on('timeupdate', function() {
+    $('.overlay').removeClass('shown');
 });
 
 setTimeout(          //wait for listener to run
