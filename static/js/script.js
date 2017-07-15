@@ -3,6 +3,10 @@ var waitTime = 2000;
 var iframe = document.querySelector('iframe');
 var player = new Vimeo.Player(iframe);
 
+setInterval(function(){
+    $('.earth').toggleClass('shown');
+}, 2000);
+
 function resizeVideo(){
     var h = $(document).height();
     var w = $(document).width();
