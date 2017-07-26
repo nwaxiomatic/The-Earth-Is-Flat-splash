@@ -27,8 +27,14 @@ resizeVideo();
 window.addEventListener('resize', resizeVideo);
 
 
-player.on('timeupdate', function() {
+player.on('timeupdate', function(data) {
     $('.overlay').removeClass('shown');
+    if (data.seconds > 2){
+      $('.donate').addClass('shown');
+    }
+    if (data.seconds > 10){
+      $('.instagram').addClass('shown');
+    }
 });
 
 var state = { autoplaying : false };
@@ -48,7 +54,9 @@ var state = { apiEnabled : null };
                   
 setTimeout(() => {
   if (state.apiEnabled === null) {
-    state.apiEnabled = false;  
-    $('.overlay').removeClass('shown');
+    state.apiEnabled = false;
+    $('.donate').addClass('shown');
+    $('.instagram').addClass('shown');
+    //$('.overlay').removeClass('shown');
   }
-}, 100);
+}, 1500);
