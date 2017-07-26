@@ -23,12 +23,6 @@
   overflow-x:hidden;
 }
 
-@media only screen and (max-width: 640px) {
-    * {
-        font-size: 16px;
-    }
-}
-
 a {
   text-decoration: none;
 }
@@ -91,27 +85,25 @@ body {
 }
 
 .hidden {
-    transition: all 2s;
+    transition: visibility 2s, opacity 2s;
     visibility: hidden;
     opacity: 0;
 }
 
 .shown {
-    transition: all 2s;
+    transition: visibility 2s, opacity 2s;
     visibility: visible;
     opacity: 1;
 }
 
-.loader {
-    border: 16px solid #3498db; /* Light grey */
-    border-top: 16px solid #f3f3f3; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@media only screen and (max-width: 640px) {
+    * {
+        font-size: 16px;
+    }
+    .donate {
+      top: 20px;
+    }
+    .instagram {
+      top: 20px;
+    }
 }
