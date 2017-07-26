@@ -59,4 +59,4 @@ setTimeout(() => {
     $('.instagram').addClass('shown');
     //$('.overlay').removeClass('shown');
   }
-}, 1500);
+}, 4000);
