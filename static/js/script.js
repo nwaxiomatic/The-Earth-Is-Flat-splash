@@ -14,6 +14,14 @@ if (isMobile){
     $('.instagram').addClass('shown');
 }
 
+window.addEventListener("load",function() {
+  // Set a timeout...
+  setTimeout(function(){
+    // Hide the address bar!
+    window.scrollTo(0, 1);
+  }, 0);
+});
+
 setInterval(function(){
     $('.earth').toggleClass('shown');
 }, 2000);
